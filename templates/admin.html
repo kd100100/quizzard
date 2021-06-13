@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin | QUIZZARD</title>
+
+        <!-- Bootstarp CDNs -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+            integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+            integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- JQuery CDN -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Fontawesome CDN -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+
+        
+        <link rel="icon" href="{{ url_for('static',filename= 'images/Srmseal.png')}}">
+    
+    </head>
+    <body>
+        <div class="container">
+            <form method="POST">
+                <label for="u_id">Unique ID for attending again</label>
+                <input type="text" name="u_id" />
+                <input type="radio" name="round" value="1" />1
+                <input type="radio" name="round" value="2" />2
+                <input type="submit" value="reattend" name="button" />
+            </form>
+
+            <form method="POST">
+                <label for="du_id">Unique ID for disqualifing again</label>
+                <input type="text" name="du_id" />
+                <input type="radio" name="dround" value="1" />1
+                <input type="radio" name="dround" value="2" />2
+                <input type="submit" value="notqualified" name="button" />
+            </form>
+            <hr>
+
+            <form method="POST">
+                <label for="du_id">Change Name</label>
+                <input type="text" name="cu_id" />
+                <input type="text" name="cname" />
+                <input type="submit" value="change" name="button" />
+            </form>
+            <hr>
+
+            <form method="POST">
+                <label for="du_id">Delete U_ID</label>
+                <input type="text" name="delu_id" />
+                <input type="submit" value="del" name="button" />
+            </form>
+            <hr>
+
+            <form method="POST">
+                <label for="u_id">Add New u_id</label>
+                <input id='add-team_id' type="text" name="u_id" placeholder="u_id"/>
+                <input id='add-password' type="text" name="password" placeholder="password"/>
+                <input id='add-name1' type="text" name="name" placeholder="name"/>
+                <input id='add-submit' type="submit" value="add_team" name="button" />
+            </form>
+
+            <hr>
+
+            <h1>Qualification</h1>
+            
+            <form method="POST">
+                <label for="u_id">R1 - R2</label>
+                <input type="text" name="u_id" />
+                <input type="submit" value="r1-r2" name="button" />
+            </form>
+
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a data-toggle="tab" href="#round1">Round 1</a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;
+                <li><a data-toggle="tab" href="#round2">Round 2</a></li>&nbsp;&nbsp;&nbsp;&nbsp;
+            </ul>
+
+            <div class="tab-content">
+                <div id="round1" class="tab-pane fade in active">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">U ID</th>
+                                <th scope="col">Members</th>
+                                <th scope="col">Round 1</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in rnd1 %}
+                            <tr>
+                                <th scope="row">{{i['u_id']}}</th>
+                                <td>{{i['name']}}</td>
+                                <td>{{i['round1']}}</td>
+                                <td>{{i['r1_time']}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="round2" class="tab-pane fade">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">U ID</th>
+                                <th scope="col">Members</th>
+                                <th scope="col">Round 2</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in rnd2 %}
+                            <tr>
+                                <th scope="row">{{i['u_id']}}</th>
+                                <td>{{i['name']}}</td>
+                                <td>{{i['round2']}}</td>
+                                <td>{{i['r2_time']}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+
+            <hr>
+
+            <h1>Teams Overview</h1>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">U ID</th>
+                        <th scope="col">Members</th>
+                        <th scope="col">Round 1</th>
+                        <th scope="col">Round 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <th scope="row">{{i['u_id']}}</th>
+                        <td>{{i['name']}}</td>
+                        <td>{{i['round1']}}</td>
+                        <td>{{i['round2']}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Create a stylish landing page for your business startup and get leads for the offered services with this HTML landing page template.">
+    <meta name="author" content="Inovatik">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>Round {{round}} | QUIZZARD</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="{{ url_for('static',filename= 'css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename= 'css/fontawesome-all.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename= 'css/magnific-popup.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename= 'css/styles.css')}}" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="{{ url_for('static',filename= 'images/Srmseal.png')}}">
+
+    
+    <style>
+        body {
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+    </style>
+
+    <script src="{{ url_for('static',filename= 'js/disableMouseRightClick.js')}}"></script>
+
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navigation -->
+    <div class="timer">
+    
+        <h1 style="margin: 20px auto;"><span id="min"></span><span style="font-size: 1rem;"> M</span> : <span id="sec"></span><span style="font-size: 1rem;"> S</span></h1>
+        <hr style="margin-bottom: 0;">
+        <script>
+            
+            // var countDownDate = new Date().getTime()+10000
+            var countDownDate = new Date().getTime()+{{time}}
+            var x = setInterval(function() {
+                document.getElementById('round_timer').value = parseInt(document.getElementById('round_timer').value)+1
+            
+                var now = new Date().getTime();
+                var distance = countDownDate - now;
+                
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                if (seconds<10) seconds = "0"+seconds;
+                if (minutes<10) minutes = "0"+minutes;
+                if (hours<10) hours = "0"+hours;
+                if (days<10) days = "0"+days;
+                
+                document.getElementById("min").innerHTML = minutes;
+                document.getElementById("sec").innerHTML = seconds;
+                
+                if (distance <= 0) {
+                    document.getElementById("submit").click();
+                }
+            }, 1000);
+        </script>
+    </div>
+
+
+    <div id='disableddd' class="quiz" style="margin-top: 150px;">
+        <div class="container">
+            <form method="POST">
+                <input type="text" style="display: none;" name="time" id="round_timer" value="0">
+                {% for i in ques %}
+                {% if i['type'] == 1 %}
+                <div class="row">
+                    <div class="quiz__box col-lg-12">
+                        <h3 class="question">{{i['qno']}}. {{i['ques']}}</h3>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt1']}}"> a) {{i['opt1']}}</span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt2']}}"> b) {{i['opt2']}}</span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt3']}}"> c) {{i['opt3']}}</span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt4']}}"> d) {{i['opt4']}}</span>
+                        <br>
+                    </div>
+                </div>
+
+                {% elif i['type'] == 2 %}
+                <div class="row">
+                    <div class="quiz__box col-lg-12">
+                        <h3 class="question">{{i['qno']}}. {{i['ques']}}</h3>
+                        <h3 class="question"><img style="height: 200px;" src="http://localhost:5000/static/images/{{i['image']}}" alt="{{i['image']}}"></h3>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt1']}}"> a) {{i['opt1']}}</span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt2']}}"> b) {{i['opt2']}}</span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt3']}}"> c) {{i['opt3']}}</span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt4']}}"> d) {{i['opt4']}}</span>
+                        <br>
+                    </div>
+                </div>
+
+                {% elif i['type'] == 3 %}
+                <div class="row">
+                    <div class="quiz__box col-lg-12">
+                        <h3 class="question">{{i['qno']}}. {{i['ques']}}</h3>
+                        <h3 class="question"><img style="height: 200px;" src="http://localhost:5000/static/images/{{i['image']}}" alt="1"></h3>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt1']}}"> a) <img style="height: 100px;" src="http://localhost:5000/static/images/{{i['opt1']}}" alt="{{i['opt1']}}"></span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt2']}}"> b) <img style="height: 100px;" src="http://localhost:5000/static/images/{{i['opt2']}}" alt="{{i['opt2']}}"></span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt3']}}"> c) <img style="height: 100px;" src="http://localhost:5000/static/images/{{i['opt3']}}" alt="{{i['opt3']}}"></span>
+                        <br><br>
+                        <span class="radio"><input type="radio" name="{{i['qno']}}" value="{{i['opt4']}}"> d) <img style="height: 100px;" src="http://localhost:5000/static/images/{{i['opt4']}}" alt="{{i['opt4']}}"></span>
+                        <br>
+                    </div>
+                </div>
+
+                {% elif i['type'] == 4 %}
+                <div class="row">
+                    <div class="quiz__box col-lg-12">
+                        <h3 class="question">{{i['qno']}}. {{i['ques']}}</h3>
+                        <input type="text" placeholder="Type Your Answer" style="margin-top: 20px;" class="input_team1" name="{{i['qno']}}"><br>
+                        <!-- <br> -->
+                    </div>
+                </div>
+
+                {% elif i['type'] == 5 %}
+                <div class="row">
+                    <div class="quiz__box col-lg-12">
+                        <h3 class="question">{{i['qno']}}. {{i['ques']}}</h3>
+                        <h3 class="question"><img style="height: 200px;" src="http://localhost:5000/static/images/{{i['image']}}" alt="1"></h3>
+                        <input type="text" placeholder="Type Your Answer" style="margin-top: 20px;" class="input_team1" name="{{i['qno']}}"><br>
+                        <!-- <br> -->
+                    </div>
+                </div>
+
+                {% elif i['type'] == 6 %}
+                <div class="row">
+                    <div class="quiz__box col-lg-12">
+                        <h3 class="question">{{i['qno']}}. {{i['ques']}}</h3>
+                        <h3 class="question"><img style="height: 200px;" src="http://localhost:5000/static/images/{{i['image1']}}" alt="1"> <img style="height: 200px;" src="http://localhost:5000/static/images/{{i['image2']}}" alt="1"></h3>
+                        <input type="text" placeholder="Type Your Answer" style="margin-top: 20px;" class="input_team1" name="{{i['qno']}}"><br>
+                        <!-- <br> -->
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <button id="submit" type="submit" class="btn-solid-lg page-scroll" style="margin-left: 40px;">Submit Quiz</button>
+            </form>
+        </div>
+    </div>
+
+
+    <style>
+        .quiz .row{
+            margin-top: 150px;
+            border: 2px solid #00a7bd;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 5px;
+            /* background-image: url("http://XIONQUIZZARD.pythonanywhere.com/static/images/backgrund.png"); */
+            /* background-repeat: repeat-x;
+            background-color: #fff; */
+        }
+
+        .quiz__box .question{
+            margin-top: 0px;
+        }
+        .quiz__box .radio{
+            font-size: 1.2rem;
+            margin: 20px 10px 10px 20px;
+        }
+        .timer{
+            text-align: center; position: fixed; top: 0; width: 100%; z-index: 1;
+            background-color: white;
+        }
+
+    </style>
+    
+    <!-- <img class="img-fluid" src="images/details-2-office-team-work.svg" alt="alternative"> -->
+
+    
+
+
+
+
+    <!-- Contact -->
+    <div id="contact" class="form-2" style="padding-top: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 style="
+                        margin-top: 120px;
+                    ">Contact Information</h2>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="address">Don't hesitate to give us a call if you have any doubts</li>
+                        <li><i class="fas fa-phone"></i><a style="text-decoration: none;" class="turquoise" href="tel:9176271734">Keerthivasan D: 9176271734</a></li><br>
+                        <li><i class="fas fa-phone"></i><a style="text-decoration: none;" class="turquoise" href="tel:8838345991">Jai Prakash S: 8838345991</a></li>
+                    </ul>
+                </div> 
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of form-2 -->
+    <!-- end of contact -->
+
+
+    
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2021 <a href="https://www.linkedin.com/in/keerthivasand/">Keerthivasan D</a> & <a href="https://www.linkedin.com/in/manoahd/">Manoah D</a> - All rights reserved</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    	
+    <!-- Scripts -->
+    <script src="{{ url_for('static',filename= 'js/jquery.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{ url_for('static',filename= 'js/popper.min.js')}}"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="{{ url_for('static',filename= 'js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
+    <script src="{{ url_for('static',filename= 'js/jquery.easing.min.js')}}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="{{ url_for('static',filename= 'js/swiper.min.js')}}"></script> <!-- Swiper for image and text sliders -->
+    <script src="{{ url_for('static',filename= 'js/jquery.magnific-popup.js')}}"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="{{ url_for('static',filename= 'js/validator.min.js')}}"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="{{ url_for('static',filename= 'js/scripts.js')}}"></script> <!-- Custom scripts -->
+</body>
+</html>

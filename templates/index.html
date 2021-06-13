@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Create a stylish landing page for your business startup and get leads for the offered services with this HTML landing page template.">
+    <meta name="author" content="Inovatik">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>Home | QUIZZARD</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="{{ url_for('static',filename= 'css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename= 'css/fontawesome-all.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename= 'css/magnific-popup.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename= 'css/styles.css')}}" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="{{ url_for('static',filename= 'images/Srmseal.png')}}">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Evolo</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="http://127.0.0.1:5000/"><img src="{{ url_for('static',filename= 'images/srm-institute-of-science-and-technology-vector-logo-removebg-preview.png')}}" alt="alternative">&nbsp;|&nbsp;XION 2021</a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#header">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#rounds">Rounds</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#how">How to Participate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+            <span class="nav-item social-icons">
+                <span class="fa-stack">
+                    <a href="https://www.instagram.com/xion.2021">
+                        <i class="fas fa-circle fa-stack-2x twitter"></i>
+                        <i class="fab fa-instagram fa-stack-1x"></i>
+                    </a>
+                </span>
+            </span>
+        </div>
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="text-container">
+                            <h1><span class="turquoise">QUIZZARD</span><br><span id="days"></span><span style="font-size: 1rem;"> D</span> : <span id="hrs"></span><span style="font-size: 1rem;"> H</span> : <span id="min"></span><span style="font-size: 1rem;"> M</span> : <span id="sec"></span><span style="font-size: 1rem;"> S</span></h1>
+
+                            <script>
+                                // Set the date we're counting down to
+                                var countDownDate = new Date("March 22, 2021 18:00:00").getTime();
+                                
+                                // Update the count down every 1 second
+                                var x = setInterval(function() {
+                                
+                                    // Get today's date and time
+                                    var now = new Date().getTime();
+                                    
+                                    // Find the distance between now and the count down date
+                                    var distance = countDownDate - now;
+                                    
+                                    // Time calculations for days, hours, minutes and seconds
+                                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                    
+                                    if (seconds<10) seconds = "0"+seconds;
+                                    if (minutes<10) minutes = "0"+minutes;
+                                    if (hours<10) hours = "0"+hours;
+                                    if (days<10) days = "0"+days;
+                                    
+                                    // Display the result in the element with id="demo"
+                                    document.getElementById("days").innerHTML = days;
+                                    document.getElementById("hrs").innerHTML = hours;
+                                    document.getElementById("min").innerHTML = minutes;
+                                    document.getElementById("sec").innerHTML = seconds;
+                                    
+                                    // If the count down is finished, write some text
+                                    if (distance < 0) {
+                                        clearInterval(x);
+                                        document.getElementById("days").innerHTML = 0;
+                                        document.getElementById("hrs").innerHTML = 0;
+                                        document.getElementById("min").innerHTML = 0;
+                                        document.getElementById("sec").innerHTML = 0;
+                                    }
+                                }, 1000);
+                                </script>
+
+                            <form method="POST">
+                                <input type="text" placeholder="Unique ID" class="input_team" name="u_id"><br>
+                                <input type="password" placeholder="Password" class="input_team" name="password"><br><br>
+                                <input type="submit" class="btn-solid-lg page-scroll" value="Enter &nbsp;Contest"/>
+                            </form>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+                    <div class="col-lg-6">
+                        <div class="image-container">
+                            <img class="img-fluid" src="{{ url_for('static',filename= 'images/details-1-office-worker.svg')}}" alt="alternative">
+                        </div> <!-- end of image-container -->
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+    
+    <!-- Pricing -->
+    <div id="rounds" class="cards-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 style="padding-bottom: 40px;">Rounds</h2>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">QUALIFIERS</div>
+                            <hr class="cell-divide-hr">
+                            <div class="price">
+                                <span class="value">x</span>
+                                <div class="frequency">Participants</div>
+                            </div>
+                            <hr class="cell-divide-hr">
+                            <ul class="list-unstyled li-space-lg">
+                                <li class="media">
+                                    <i class="fas fa-check"></i><div class="media-body">25 Questions</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-check"></i><div class="media-body">25 Minutes</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-check"></i><div class="media-body">Difficulty: Easy</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> <!-- end of card -->
+                    <!-- end of card -->
+
+
+                    <!-- Card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">FINALS</div>
+                            <hr class="cell-divide-hr">
+                            <div class="price">
+                                <span class="value">15</span>
+                                <div class="frequency">Participants</div>
+                            </div>
+                            <hr class="cell-divide-hr">
+                            <ul class="list-unstyled li-space-lg">
+                                <li class="media">
+                                    <i class="fas fa-check"></i><div class="media-body">15 Questions</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-check"></i><div class="media-body">10 Minutes</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-check"></i><div class="media-body">Difficulty: Medium</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> <!-- end of card -->
+                    <!-- end of card -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of cards-2 -->
+    <!-- end of pricing -->
+
+
+
+    <!-- Services -->
+    <div id="how" class="cards-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 style="padding-bottom: 40px;">How to Participate</h2>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Card -->
+                    <div class="card">
+                        <img class="card-image" src="{{ url_for('static',filename= 'images/team_id.png')}}" alt="alternative">
+                        <div class="card-body">
+                            <h4 class="card-title">Enter Credentials</h4>
+                            <p>You would have recieved the Unique ID and Password in your registerd Mail ID. Click enter to open your Dashboard.</p>
+                        </div>
+                    </div>
+                    <!-- end of card -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <img class="card-image" src="{{ url_for('static',filename= 'images/services-icon-2.png')}}" alt="alternative">
+                        <div class="card-body">
+                            <h4 class="card-title">Select the Round</h4>
+                            <p>Click on the round at respective start times and enter the Quiz. Please read the Round Details  </p>
+                        </div>
+                    </div>
+                    <!-- end of card -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <img class="card-image" src="{{ url_for('static',filename= 'images/services-icon-1.svg')}}" alt="alternative">
+                        <div class="card-body">
+                            <h4 class="card-title">Attend the Quiz</h4>
+                            <p>Once the timer becomes zero, the quiz automatically submits. Not all questions are compulasary</p>
+                        </div>
+                    </div>
+                    <!-- end of card -->
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of cards-1 -->
+    <!-- end of services -->
+
+
+    
+
+    
+    <!-- <img class="img-fluid" src="images/details-2-office-team-work.svg" alt="alternative"> -->
+
+    
+
+
+
+
+    <!-- Contact -->
+    <div id="contact" class="form-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 style="
+                        margin-top: 120px;
+                    ">Contact Information</h2>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="address">Don't hesitate to give us a call if you have any doubts</li>
+                        <li><i class="fas fa-phone"></i><a style="text-decoration: none;" class="turquoise" href="tel:9176271734">Keerthivasan D: 9176271734</a></li><br>
+                        <li><i class="fas fa-phone"></i><a style="text-decoration: none;" class="turquoise" href="tel:8838345991">Jai Prakash S: 8838345991</a></li>
+                    </ul>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15546.99269208432!2d80.2104745!3d13.051695!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x70bbbca6edfc9243!2sSRM%20Institute%20Of%20Science%20And%20Technology%2C%20City%20Campus!5e0!3m2!1sen!2sin!4v1613656359852!5m2!1sen!2sin" width="500" height="380" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div> <!-- end of col -->
+                
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of form-2 -->
+    <!-- end of contact -->
+
+
+    
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2021 <a href="https://www.linkedin.com/in/keerthivasand/">Keerthivasan D</a> & <a href="https://www.linkedin.com/in/manoahd/">Manoah D</a> - All rights reserved</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    	
+    <!-- Scripts -->
+    <script src="{{ url_for('static',filename= 'js/jquery.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{ url_for('static',filename= 'js/popper.min.js')}}"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="{{ url_for('static',filename= 'js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
+    <script src="{{ url_for('static',filename= 'js/jquery.easing.min.js')}}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="{{ url_for('static',filename= 'js/swiper.min.js')}}"></script> <!-- Swiper for image and text sliders -->
+    <script src="{{ url_for('static',filename= 'js/jquery.magnific-popup.js')}}"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="{{ url_for('static',filename= 'js/validator.min.js')}}"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="{{ url_for('static',filename= 'js/scripts.j')}}s"></script> <!-- Custom scripts -->
+</body>
+</html>
