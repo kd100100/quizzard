@@ -15,8 +15,8 @@ driver = webdriver.Chrome(PATH)
 driver.get('https://quizzardslot2.pythonanywhere.com/admin')
 ##driver.get('http://127.0.0.1:5000/admin')
 
-search = driver.find_element_by_name('password')
-search.send_keys('kd1001')
+search = driver.find_element_by_name(////////)
+search.send_keys(////////)
 
 search.send_keys(Keys.RETURN)
 
